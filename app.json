@@ -1,29 +1,54 @@
 {
-  "expo": {
-    "name": "Doyouknow_App",
-    "slug": "Doyouknow_App",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "expo": {
+        "name": "Doyouknow_App",
+        "slug": "Doyouknow_App",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "userInterfaceStyle": "light",
+        "newArchEnabled": true,
+        "splash": {
+            "image": "./assets/splash-icon.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.doyouknow.app",
+            "googleServicesFile": "./GoogleService-Info.plist",
+            "infoPlist": {
+                "UIBackgroundModes": ["remote-notification"]
+            },
+            "entitlements": {
+                "aps-environment": "production"
+            }
+        },
+        "android": {
+            "package": "com.doyouknow.app",
+            "googleServicesFile": "./google-services.json",
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "edgeToEdgeEnabled": true,
+            "permissions": ["NOTIFICATIONS"]
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "plugins": [
+            [
+                "expo-notifications",
+                {
+                    "icon": "./assets/test.png",
+                    "sounds": ["./assets/sounds/sound.mp3"]
+                }
+            ]
+        ],
+        "extra": {
+            "eas": {
+                "projectId": "d9c56df5-5242-4083-b706-52942c01312b"
+            }
+        }
     }
-  }
 }
