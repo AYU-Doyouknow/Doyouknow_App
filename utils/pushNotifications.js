@@ -44,7 +44,7 @@ export async function registerForPushNotificationsAsync() {
 
         const token = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
         console.log("FCM 토큰:", token);
-        Alert.alert("푸시 토큰 발급 완료", token);
+        //Alert.alert("푸시 토큰 발급 완료", token);
         await sendTokenToServer(token);
         return token;
     } catch (e) {
@@ -65,7 +65,7 @@ async function sendTokenToServer(token) {
             platform: Platform.OS,
         });
         console.log("서버에 토큰 전송 완료");
-        Alert.alert("서버에 토큰 전송 완료");
+        //Alert.alert("서버에 토큰 전송 완료");
     } catch (error) {
         console.error("서버 전송 실패:", error);
     }
