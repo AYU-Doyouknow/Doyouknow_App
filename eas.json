@@ -1,0 +1,31 @@
+{
+    "cli": {
+        "version": ">= 16.17.0",
+        "appVersionSource": "remote"
+    },
+    "build": {
+        "production": {
+            "autoIncrement": true,
+            "distribution": "store",
+            "android": {
+                "buildType": "app-bundle"
+            },
+            "ios": {
+                "simulator": false
+            }
+        },
+        "development": {
+            "developmentClient": true,
+            "distribution": "internal",
+            "android": {
+                "buildType": "apk"
+            },
+            "ios": {
+                "simulator": false
+            }
+        }
+    },
+    "submit": {
+        "production": {}
+    }
+}

@@ -1,29 +1,55 @@
 {
-  "expo": {
-    "name": "DoyouknowApp",
-    "slug": "DoyouknowApp",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "expo": {
+        "name": "이거아냥?",
+        "slug": "DoyouknowApp",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "userInterfaceStyle": "light",
+        "newArchEnabled": false,
+        "splash": {
+            "image": "./assets/splash-icon.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.gudongyeop.DoyouknowApp",
+            "infoPlist": {
+                "UIBackgroundModes": ["remote-notification"],
+                "ITSAppUsesNonExemptEncryption": false
+            },
+            "entitlements": {
+                "aps-environment": "production"
+            }
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "edgeToEdgeEnabled": true,
+            "package": "com.gudongyeop.DoyouknowApp",
+            "permissions": ["NOTIFICATIONS"]
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "plugins": [
+            [
+                "expo-build-properties",
+                {
+                    "ios": {
+                        "useFrameworks": "static"
+                    }
+                }
+            ],
+            "expo-notifications"
+        ],
+        "extra": {
+            "eas": {
+                "projectId": "e2faabdf-c51c-4878-a975-9fd90d5d4d3e"
+            }
+        }
     }
-  }
 }
