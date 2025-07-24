@@ -23,7 +23,7 @@ function WebviewWrapper() {
     const containerStyle = {
         flex: 1,
         backgroundColor: "#ffffff",
-        paddingTop: Platform.OS === "ios" ? screenHeight * 0.03 : screenHeight * 0.01,
+        paddingTop: Platform.OS === "ios" ? screenHeight * 0.04 : screenHeight * 0.01,
         paddingBottom: Platform.OS === "ios" ? screenHeight * 0.001 : screenHeight * 0.05,
     };
 
