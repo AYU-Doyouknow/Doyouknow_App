@@ -71,13 +71,16 @@ async function sendTokenToServer(token) {
     }
 }
 
-export function setupNotificationListeners() {
+export function setupNotificationListeners(onResponse) {
     const notificationListener = Notifications.addNotificationReceivedListener((notification) => {
         console.log("알림 수신됨:", notification);
     });
 
     const responseListener = Notifications.addNotificationResponseReceivedListener((response) => {
         console.log("알림 반응:", response);
+        if (onResponse) {
+            onResponse(response);
+        }
     });
 
     return { notificationListener, responseListener };

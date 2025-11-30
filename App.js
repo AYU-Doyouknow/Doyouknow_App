@@ -40,22 +40,19 @@ function WebviewWrapper() {
         return () => backHandler.remove();
     }, []);
 
-    return (
-        <View style={containerStyle}>
-            <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
-            <WebView ref={webviewRef} source={{ uri: "https://doyouknowayu.netlify.app" }} style={StyleSheet.absoluteFill} allowsBackForwardNavigationGestures={true} />
-        </View>
-    );
-}
-
-export default function App() {
     const notificationListenerRef = useRef();
     const responseListenerRef = useRef();
 
     useEffect(() => {
         const initPush = async () => {
             await registerForPushNotificationsAsync();
-            const { notificationListener, responseListener } = setupNotificationListeners();
+            const { notificationListener, responseListener } = setupNotificationListeners((response) => {
+                const url = response.notification.request.content.data.url;
+                if (url && webviewRef.current) {
+                    const redirectTo = 'window.location.href = "' + url + '"';
+                    webviewRef.current.injectJavaScript(redirectTo);
+                }
+            });
             notificationListenerRef.current = notificationListener;
             responseListenerRef.current = responseListener;
         };
@@ -67,6 +64,15 @@ export default function App() {
         };
     }, []);
 
+    return (
+        <View style={containerStyle}>
+            <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
+            <WebView ref={webviewRef} source={{ uri: "https://doyouknowayu.netlify.app" }} style={StyleSheet.absoluteFill} allowsBackForwardNavigationGestures={true} />
+        </View>
+    );
+}
+
+export default function App() {
     return (
         <SafeAreaProvider>
             <WebviewWrapper />
